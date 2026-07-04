@@ -2,11 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.health import router as health_router
+from app.core.config import settings
 
 app = FastAPI(
-    title="ResumeIQ AI API",
-    description="Backend API for ResumeIQ AI SaaS",
-    version="1.0.0",
+    title=settings.APP_NAME,
+    version=settings.APP_VERSION,
 )
 
 app.add_middleware(
@@ -23,5 +23,5 @@ app.include_router(health_router)
 @app.get("/")
 def root():
     return {
-        "message": "Welcome to ResumeIQ AI API"
+        "message": f"Welcome to {settings.APP_NAME}"
     }

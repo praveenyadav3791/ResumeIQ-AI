@@ -1,9 +1,13 @@
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Features from "./components/Features";
+
 function App() {
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-      <h1 className="text-5xl font-bold text-white">
-        ResumeIQ AI 🚀
-      </h1>
+    <div className="min-h-screen bg-slate-950 text-white">
+      <Navbar />
+      <Hero />
+      <Features />
     </div>
   );
 }

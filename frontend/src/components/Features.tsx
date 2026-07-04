@@ -1,64 +1,104 @@
+import { motion } from "framer-motion";
+import {
+  BarChart3,
+  FileSearch,
+  Sparkles,
+  FileCheck,
+  ShieldCheck,
+  Download,
+} from "lucide-react";
+
+const features = [
+  {
+    icon: BarChart3,
+    title: "ATS Score",
+    description:
+      "Know exactly how ATS-friendly your resume is before applying.",
+  },
+  {
+    icon: FileSearch,
+    title: "Keyword Analysis",
+    description:
+      "Compare your resume with any Job Description and discover missing keywords.",
+  },
+  {
+    icon: Sparkles,
+    title: "AI Suggestions",
+    description:
+      "Receive AI-powered improvements for every section of your resume.",
+  },
+  {
+    icon: FileCheck,
+    title: "Grammar Check",
+    description:
+      "Fix grammar mistakes and improve readability instantly.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Professional Templates",
+    description:
+      "Create clean, ATS-friendly resumes used by professionals.",
+  },
+  {
+    icon: Download,
+    title: "Export PDF",
+    description:
+      "Download your optimized resume in one click.",
+  },
+];
+
 function Features() {
-  const features = [
-    {
-      title: "ATS Score",
-      description: "Get an ATS compatibility score instantly for your resume.",
-      icon: "📊",
-    },
-    {
-      title: "Grammar Check",
-      description: "Improve grammar, readability and professionalism.",
-      icon: "✍️",
-    },
-    {
-      title: "Keyword Optimization",
-      description: "Find missing keywords from job descriptions.",
-      icon: "🎯",
-    },
-    {
-      title: "Resume Suggestions",
-      description: "Receive AI-powered suggestions to improve your resume.",
-      icon: "🤖",
-    },
-    {
-      title: "Modern Templates",
-      description: "Create clean and professional ATS-friendly resumes.",
-      icon: "📄",
-    },
-    {
-      title: "PDF Export",
-      description: "Download your optimized resume in PDF format.",
-      icon: "⬇️",
-    },
-  ];
-
   return (
-    <section className="py-24 px-6">
-      <h2 className="text-4xl font-bold text-center mb-4">
-        Powerful Features
-      </h2>
+    <section className="max-w-7xl mx-auto px-6 py-24">
 
-      <p className="text-center text-gray-400 mb-14">
-        Everything you need to build a professional ATS-friendly resume.
-      </p>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h2 className="text-5xl font-bold text-center">
+          Powerful Features
+        </h2>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
-        {features.map((feature) => (
-          <div
-            key={feature.title}
-            className="bg-slate-900 border border-slate-700 rounded-2xl p-8 hover:border-blue-500 transition duration-300"
-          >
-            <div className="text-5xl mb-6">{feature.icon}</div>
+        <p className="text-center text-gray-400 mt-5 max-w-2xl mx-auto">
+          Everything you need to build a professional resume that passes ATS
+          filters and impresses recruiters.
+        </p>
+      </motion.div>
 
-            <h3 className="text-2xl font-semibold mb-4">
-              {feature.title}
-            </h3>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
 
-            <p className="text-gray-400 leading-7">
-              {feature.description}
-            </p>
-          </div>
-        ))}
+        {features.map((feature, index) => {
+          const Icon = feature.icon;
+
+          return (
+            <motion.div
+              key={index}
+              whileHover={{
+                y: -8,
+                scale: 1.02,
+              }}
+              transition={{
+                duration: 0.25,
+              }}
+              className="rounded-3xl border border-slate-800 bg-slate-900 p-8 hover:border-blue-500 transition-all shadow-lg"
+            >
+              <div className="h-14 w-14 rounded-2xl bg-blue-600 flex items-center justify-center">
+
+                <Icon size={28} />
+
+              </div>
+
+              <h3 className="text-2xl font-semibold mt-8">
+                {feature.title}
+              </h3>
+
+              <p className="text-gray-400 mt-5 leading-7">
+                {feature.description}
+              </p>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
